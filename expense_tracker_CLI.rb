@@ -1,8 +1,13 @@
 require 'thor'
 require 'pstore'
 require 'date'
+require 'logger'
 
 class ExpenseCLI < Thor
+  # Create a logger
+  LOGGER = Logger.new('expense.log')
+  LOGGER.level = Logger::INFO # Adjust the log level as needed (e.g., Logger::DEBUG)
+
   desc "add", "Add a new expense"
   def add
     payee = ask("Enter the payee: ")
@@ -30,6 +35,8 @@ class ExpenseCLI < Thor
       store[:expenses] << expense
     end
     puts "Added: #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]}"
+    # Log the addition of an expense
+    LOGGER.info("Added: #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]}")
   end
 
   desc "list", "List all expenses"
@@ -47,6 +54,7 @@ class ExpenseCLI < Thor
             puts "#{index + 1}. #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]}"
           else
             puts "Expense at index #{index} is not properly formatted."
+            LOGGER.error("Expense at index #{index} is not properly formatted.")
           end
         end
       end
@@ -56,6 +64,8 @@ class ExpenseCLI < Thor
 
   desc "remove", "Remove an expense by its index"
   def remove
+    list
+    index = ask("Enter the index to remove: ").to_i - 1
     store = PStore.new('expense.pstore')
     store.transaction do
       expenses = store[:expenses] || []
@@ -65,15 +75,14 @@ class ExpenseCLI < Thor
         return
       end
 
-      list
-      index = ask("Enter the index to remove: ").to_i - 1
-
       if index >= 0 && index < expenses.length
         removed_expense = expenses.delete_at(index)
         store[:expenses] = expenses
         puts "Removed: #{removed_expense[:payee]} - #{removed_expense[:amount]} - #{removed_expense[:date]}"
       else
         puts "Invalid index. Use 'list' to see the expense indices."
+        # Log the error for an invalid index
+        LOGGER.error("Invalid index. Use 'list' to see the expense indices.")
       end
     end
   end
@@ -112,6 +121,8 @@ class ExpenseCLI < Thor
         puts "Updated expense #{index + 1}: #{old_expense[:payee]} - #{old_expense[:amount]} - #{old_expense[:date]} -> #{new_expense[:payee]} - #{new_expense[:amount]} - #{new_expense[:date]}"
       else
         puts "Invalid index. Use 'list' to see the expense indices."
+        # Log the error for an invalid index
+        LOGGER.error("Invalid index. Use 'list' to see the expense indices.")
       end
     end
   end
