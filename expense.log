@@ -4,3 +4,6 @@ I, [2023-10-18T11:01:06.525046 #10960]  INFO -- : 1. jio - 1000.0 - 2023-10-18
 I, [2023-10-18T11:01:06.525301 #10960]  INFO -- : 2. gowtham - 50000.0 - 2023-10-18
 E, [2023-10-18T11:12:51.867358 #13656] ERROR -- : Invalid index. Use 'list' to see the expense indices.
 E, [2023-10-18T11:14:07.984923 #2720] ERROR -- : Invalid index. Use 'list' to see the expense indices.
+I, [2023-10-18T11:59:52.747273 #9156]  INFO -- : Added: New Hotel - 1000.0 - 2023-10-28
+I, [2023-10-18T12:03:37.060414 #16104]  INFO -- : Added: New Hotel - 10000.0 - 2023-10-18
+I, [2023-10-18T12:04:20.292701 #13520]  INFO -- : Added: New Hotel - 10000.0 - 2023-10-18
