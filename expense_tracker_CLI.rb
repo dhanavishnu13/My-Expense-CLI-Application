@@ -78,6 +78,7 @@ class ExpenseCLI < Thor
         expenses.each_with_index do |expense, index|
           if expense.is_a?(Hash) && expense.key?(:payee) && expense.key?(:amount) && expense.key?(:date)
             puts "#{index + 1}. #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category]}"
+            LOGGER.info("#{index + 1}. #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category]}")
           else
             puts "Expense at index #{index} is not properly formatted."
             LOGGER.error("Expense at index #{index} is not properly formatted.")
@@ -105,6 +106,7 @@ class ExpenseCLI < Thor
         removed_expense = expenses.delete_at(index)
         store[:expenses] = expenses
         puts "Removed: #{removed_expense[:payee]} - #{removed_expense[:amount]} - #{removed_expense[:date]} - #{removed_expense[:category]}"
+        LOGGER.info("Removed: #{removed_expense[:payee]} - #{removed_expense[:amount]} - #{removed_expense[:date]} - #{removed_expense[:category]}")
       else
         puts "Invalid index. Use 'list' to see the expense indices."
         # Log the error for an invalid index
@@ -162,6 +164,7 @@ class ExpenseCLI < Thor
         store[:expenses] = expenses
 
         puts "Updated expense #{index + 1}: #{old_expense[:payee]} - #{old_expense[:amount]} - #{old_expense[:date]} - #{old_expense[:category]} -> #{new_expense[:payee]} - #{new_expense[:amount]} - #{new_expense[:date]} - #{new_expense[:category]}"
+        LOGGER.info("Updated expense #{index + 1}: #{old_expense[:payee]} - #{old_expense[:amount]} - #{old_expense[:date]} - #{old_expense[:category]} -> #{new_expense[:payee]} - #{new_expense[:amount]} - #{new_expense[:date]} - #{new_expense[:category]}")
       else
         puts "Invalid index. Use 'list' to see the expense indices."
         # Log the error for an invalid index
