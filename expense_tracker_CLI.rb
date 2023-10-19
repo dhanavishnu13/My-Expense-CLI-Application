@@ -20,30 +20,29 @@ class ExpenseCLI < Thor
   def add
     payee = ask("Enter the payee: ")
     amount = ask("Enter the amount: ").to_f
-    # date = ask("Enter the date (YYYY-MM-DD): ")
-    date = Date.today
+    if amount <= 0
+      puts "Invalid input. Please enter a positive amount."
+      return
+    end
+    date = ask("Enter the date (YYYY-MM-DD): ")
+    # date = Date.today
+
+    # # Validate the date format
+    unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+      puts "Invalid date format. Please use YYYY-MM-DD."
+      return
+    end
+
+    date = Date.parse(date)
 
     # Display the categories with their corresponding numbers
-    puts "Please choose a category from the following list:"
+    puts "Please choose a category ID from the following list:"
     $categories.each do |key, value|
       puts "#{value} - #{key}"
     end
 
     # Ask the user for their choice and convert it to an integer
-    choice = ask("Enter your category: ").to_i
-
-    # # Validate the date format
-    # unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
-    #   puts "Invalid date format. Please use YYYY-MM-DD."
-    #   return
-    # end
-
-    # date = Date.parse(date)
-
-    if amount <= 0
-      puts "Invalid input. Please enter a positive amount."
-      return
-    end
+    choice = ask("Enter your category: ").to_i    
 
     # Validate the choice and assign it to a variable
     if $categories.values.include?(choice)
@@ -76,7 +75,7 @@ class ExpenseCLI < Thor
       else
         # Print each expense with its index, payee, amount, and date
         expenses.each_with_index do |expense, index|
-          if expense.is_a?(Hash) && expense.key?(:payee) && expense.key?(:amount) && expense.key?(:date)
+          if expense.is_a?(Hash) && expense.key?(:payee) && expense.key?(:amount) && expense.key?(:date) #create a function
             puts "#{index + 1}. #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category]}"
             LOGGER.info("#{index + 1}. #{expense[:payee]} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category]}")
           else
@@ -133,8 +132,15 @@ class ExpenseCLI < Thor
         old_expense = expenses[index]
 
         payee = ask("Enter the new payee (leave empty to keep '#{old_expense[:payee]}'): ")
+        # Validate and update attributes
+        payee = old_expense[:payee] if payee.empty?
+
         amount = ask("Enter the new amount (leave empty to keep '#{old_expense[:amount]}'): ").to_f
+        amount = old_expense[:amount] if amount <= 0
+
         date = ask("Enter the new date (YYYY-MM-DD, leave empty to keep '#{old_expense[:date]}'): ")
+        date = Date.parse(date) if date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+        
         # Display the categories with their corresponding numbers
         puts "Please choose a category from the following list:"
         $categories.each do |key, value|
@@ -143,13 +149,6 @@ class ExpenseCLI < Thor
 
         # Ask the user for their choice and convert it to an integer
         choice = ask("Enter new category (leave empty to keep '#{old_expense[:category]}'): ").to_i
-
-
-
-        # Validate and update attributes
-        payee = old_expense[:payee] if payee.empty?
-        amount = old_expense[:amount] if amount <= 0
-        date = Date.parse(date) if date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
 
         # Validate the choice and assign it to a variable
         if $categories.values.include?(choice)
