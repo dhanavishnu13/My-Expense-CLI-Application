@@ -2,11 +2,12 @@ require 'thor'
 require 'pstore'
 require 'date'
 require 'logger'
+# require_relative 'lib/expense_cli'
 
 class ExpenseCLI < Thor
   # Create a logger
   LOGGER = Logger.new('expense.log')
-  LOGGER.level = Logger::INFO # Adjust the log level as needed (e.g., Logger::DEBUG)
+  LOGGER.level = Logger::INFO 
 
   # Create a class for payee
   class Payee
@@ -36,7 +37,7 @@ class ExpenseCLI < Thor
     Category.new("other", 5)
   ]
 
-  # Helper function
+  ###################### Helper function ######################
 
   desc "extract","Extract the expense"
   def extract(expense)
@@ -53,7 +54,7 @@ class ExpenseCLI < Thor
     expense.key?(:category) && expense[:category].is_a?(Category)
   end
 
-  # Main Modules
+  ###################### Main Modules ######################
 
   desc "add", "Add a new expense"
   def add
@@ -63,8 +64,16 @@ class ExpenseCLI < Thor
 
     puts "Enter Your New Expense Details"
     loop do
-      payee_name = ask("Enter the payee: ")
-      payee = Payee.new(payee_name)
+      loop do
+        payee_name = ask("Enter the payee: ").strip
+        if payee_name.empty?
+          puts "Please enter the payee name"
+          next
+        else
+          payee = Payee.new(payee_name)
+          break
+        end
+      end
 
       loop do
         amount = ask("Enter the amount: ").to_f
@@ -80,7 +89,7 @@ class ExpenseCLI < Thor
         date = ask("Enter the date (YYYY-MM-DD): ")
 
         # Validate the date format
-        unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+        unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/) && date.is_a?(Date)
           puts "Invalid date format. Please use YYYY-MM-DD."
           next
         end
@@ -129,17 +138,14 @@ class ExpenseCLI < Thor
   desc "list", "List all expenses"
   def list
     puts "Your Expense Details"
-    # Retrieve the expenses from the persistent storage
     store = PStore.new('expense.pstore')
     store.transaction do
       expenses = store[:expenses] || []
       if expenses.empty?
         puts "No items in the Expense list."
       else
-        # Print each expense with its index, payee, amount, date, and category
         expenses.each_with_index do |expense, index|
           if valid_expense?(expense)
-            # Use the name attribute of the payee and category objects to display them
             puts "#{index + 1}. #{extract(expense)}"
             LOGGER.info("#{index + 1}. #{extract(expense)}")
           else
@@ -232,7 +238,7 @@ class ExpenseCLI < Thor
         if choice==0
           category= old_expense[:category]
         else
-          category = $categories.find { |category| category.id == choice } # Find the category object that matches the choice
+          category = $categories.find { |category| category.id == choice }
           if category.nil?
             puts "Invalid choice. Please enter a valid number."
             return
