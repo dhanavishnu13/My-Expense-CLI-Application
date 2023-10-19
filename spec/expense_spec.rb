@@ -1,11 +1,10 @@
-require 'expense'
+require 'payee'
 
-
-describe Expense do
-  
-    it "get the first expense" do
-        
-        
+describe Payee do
+    it "check payee name" do
+        name=Payee.new("   ")
+        valid_name=name.validate
+        expect(valid_name)        
     end
 
 end

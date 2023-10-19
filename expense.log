@@ -256,3 +256,5 @@ I, [2023-10-19T18:20:54.073031 #1172]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19
 I, [2023-10-19T18:21:19.090886 #1172]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
 I, [2023-10-19T18:22:05.128221 #15664]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
 I, [2023-10-19T18:22:22.415349 #15664]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T18:23:20.403116 #15664]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T18:23:21.733011 #15664]  INFO -- : Removed: RedBus - 1000.0 - 2023-10-19 - transportation
