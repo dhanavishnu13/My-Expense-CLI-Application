@@ -38,9 +38,9 @@ class ExpenseCLI < Thor
 
   # Helper function
 
-  desc "display","Display the expense"
-  def display(expense,method)
-    puts "#{method}ed: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
+  desc "extract","Extract the expense"
+  def extract(expense)
+    return "#{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
   end
   
   # Define a separate function to check if an expense is valid
@@ -117,11 +117,10 @@ class ExpenseCLI < Thor
         store[:expenses] ||= []
         store[:expenses] << expense
       end
-      display(expense,method)
-      puts "Added: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
+      puts "Added: #{extract(expense)}"
 
       # Log the addition of an expense
-      LOGGER.info("Added: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]}")
+      LOGGER.info("Added: #{extract(expense)}")
 
       break
     end
@@ -141,8 +140,8 @@ class ExpenseCLI < Thor
         expenses.each_with_index do |expense, index|
           if valid_expense?(expense)
             # Use the name attribute of the payee and category objects to display them
-            puts "#{index + 1}. #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
-            LOGGER.info("#{index + 1}. #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}")
+            puts "#{index + 1}. #{extract(expense)}"
+            LOGGER.info("#{index + 1}. #{extract(expense)}")
           else
             puts "Expense at index #{index} is not properly formatted."
             LOGGER.error("Expense at index #{index} is not properly formatted.")
@@ -154,7 +153,6 @@ class ExpenseCLI < Thor
 
   desc "remove", "Remove an expense by its index"
   def remove
-    method='Remove'
     list
     begin
       index = ask("Enter the index to remove: ").to_i - 1
@@ -170,9 +168,9 @@ class ExpenseCLI < Thor
         removed_expense = expenses.delete_at(index)
         store[:expenses] = expenses
 
-        display(removed_expense,method)
+        puts "Removed: #{extract(removed_expense)}"
 
-        LOGGER.info("Removed: #{removed_expense[:payee].name} - #{removed_expense[:amount]} - #{removed_expense[:date]} - #{removed_expense[:category].name}")
+        LOGGER.info("Removed: #{extract(removed_expense)}")
       end
     rescue 
       puts "An error occurred: #{$!}"
@@ -243,12 +241,12 @@ class ExpenseCLI < Thor
           end
         end
 
-        new_expense = { payee: payee, amount: amount, date: date, category: category.name }
+        new_expense = { payee: payee, amount: amount, date: date, category: category }
         expenses[index] = new_expense
         store[:expenses] = expenses
-
-        puts "Updated expense #{index + 1}: #{old_expense[:payee].name} - #{old_expense[:amount]} - #{old_expense[:date]} - #{old_expense[:category].name} -> #{new_expense[:payee].name} - #{new_expense[:amount]} - #{new_expense[:date]} - #{new_expense[:category]}"
-        LOGGER.info("Updated expense #{index + 1}: #{old_expense[:payee].name} - #{old_expense[:amount]} - #{old_expense[:date]} - #{old_expense[:category].name} -> #{new_expense[:payee].name} - #{new_expense[:amount]} - #{new_expense[:date]} - #{new_expense[:category]}")
+        
+        puts "Updated expense #{index + 1}: #{extract(old_expense)} -> #{extract(new_expense)}"
+        LOGGER.info("Updated expense #{index + 1}: #{extract(old_expense)} -> #{extract(new_expense)}")
       else
         puts "Invalid index. Use 'list' to see the expense indices."
         # Log the error for an invalid index
