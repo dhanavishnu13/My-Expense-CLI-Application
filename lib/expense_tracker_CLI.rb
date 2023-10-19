@@ -87,14 +87,17 @@ class ExpenseCLI < Thor
 
       loop do
         date = ask("Enter the date (YYYY-MM-DD): ")
-
+      
         # Validate the date format
-        unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/) && date.is_a?(Date)
-          puts "Invalid date format. Please use YYYY-MM-DD."
-          next
+        unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/) 
+          begin
+            date = Date.parse(date)
+            break
+          rescue ArgumentError
+            puts "Invalid date format. Please use YYYY-MM-DD."
+            next
+          end
         end
-
-        date = Date.parse(date)
         break
       end
 
