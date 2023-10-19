@@ -11,4 +11,10 @@ To Read:
 To Update:
 - ruby .\todo_CLI.rb update 1 "Sec"
 
+To add RSpec
+- bundle init
+- add gem 'rspec'
+- bundle binstubs rspec-core
+- bin/rspec --init
+
 
