@@ -108,3 +108,14 @@ E, [2023-10-19T09:53:05.130121 #12240] ERROR -- : Expense at index 1 is not prop
 E, [2023-10-19T09:53:05.130965 #12240] ERROR -- : Expense at index 2 is not properly formatted.
 I, [2023-10-19T09:53:55.212084 #12240]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1000.0 - 2023-10-19 - transportation
 I, [2023-10-19T09:55:29.157285 #3544]  INFO -- : Added: RedBus - 1000.0 - 2023-10-19
+I, [2023-10-19T10:46:26.810614 #2568]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T10:46:34.966412 #2568]  INFO -- : Removed: RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T10:48:44.152454 #12828]  INFO -- : Added: RedBus - 1500.0 - 2023-10-19
+I, [2023-10-19T10:48:52.839987 #4304]  INFO -- : 1. RedBus - 1500.0 - 2023-10-19 - transportation
+E, [2023-10-19T10:48:55.120035 #4304] ERROR -- : Invalid index. Use 'list' to see the expense indices.
+I, [2023-10-19T11:01:40.016476 #5428]  INFO -- : 1. RedBus - 1500.0 - 2023-10-19 - transportation
+E, [2023-10-19T11:01:43.735730 #5428] ERROR -- : Invalid index. Use 'list' to see the expense indices.
+I, [2023-10-19T11:02:32.253120 #3156]  INFO -- : 1. RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-19T11:03:01.684691 #3156]  INFO -- : Removed: RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-19T11:27:08.142286 #12944]  INFO -- : Added: noname - 10000.0 - 2023-10-19
+I, [2023-10-19T11:39:53.657356 #5304]  INFO -- : 1. noname - 10000.0 - 2023-10-19 - other

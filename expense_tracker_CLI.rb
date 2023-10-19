@@ -36,59 +36,13 @@ class ExpenseCLI < Thor
     Category.new("other", 5)
   ]
 
-  desc "add", "Add a new expense"
-  def add
-    payee_name = ask("Enter the payee: ")
-    payee = Payee.new(payee_name) # Create a payee object with the given name
-    amount = ask("Enter the amount: ").to_f
-    if amount <= 0
-      puts "Invalid input. Please enter a positive amount."
-      return
-    end
-    date = ask("Enter the date (YYYY-MM-DD): ")
-    # date = Date.today
+  # Helper function
 
-    # Validate the date format
-    unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
-      puts "Invalid date format. Please use YYYY-MM-DD."
-      return
-    end
-
-    date = Date.parse(date)
-
-    # Display the categories with their corresponding numbers
-    puts "Please choose a category ID from the following list:"
-    $categories.each do |category|
-      puts "#{category.id} - #{category.name}"
-    end
-
-    # Ask the user for their choice and convert it to an integer
-    choice = ask("Enter your category: ").to_i    
-
-    # Validate the choice and assign it to a variable
-    category = $categories.find { |category| category.id == choice } # Find the category object that matches the choice
-    if category.nil?
-      puts "Invalid choice. Please enter a valid number."
-      return
-    else
-      puts "You chose #{category.name}"
-    end
-
-    expense = { payee: payee, amount: amount, date: date, category: category}
-    
-    # Store the expense object in a persistent storage
-    store = PStore.new('expense.pstore')
-    store.transaction do
-      store[:expenses] ||= []
-      store[:expenses] << expense
-    end
-    
-    puts "Added: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
-    
-    # Log the addition of an expense
-    LOGGER.info("Added: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]}")
+  desc "display","Display the expense"
+  def display(expense,method)
+    puts "#{method}ed: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
   end
-
+  
   # Define a separate function to check if an expense is valid
   desc "validate","Validate the expense"
   def valid_expense?(expense)
@@ -99,8 +53,83 @@ class ExpenseCLI < Thor
     expense.key?(:category) && expense[:category].is_a?(Category)
   end
 
+  # Main Modules
+
+  desc "add", "Add a new expense"
+  def add
+    #variable intialization
+    payee,amount,date,category='',0.0,'',''
+    method='Add'
+
+    puts "Enter Your New Expense Details"
+    loop do
+      payee_name = ask("Enter the payee: ")
+      payee = Payee.new(payee_name)
+
+      loop do
+        amount = ask("Enter the amount: ").to_f
+        if amount <= 0
+          puts "Invalid input. Please enter a positive amount."
+          next
+        else
+          break
+        end
+      end
+
+      loop do
+        date = ask("Enter the date (YYYY-MM-DD): ")
+
+        # Validate the date format
+        unless date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+          puts "Invalid date format. Please use YYYY-MM-DD."
+          next
+        end
+
+        date = Date.parse(date)
+        break
+      end
+
+      # Display the categories with their corresponding numbers
+      puts "Please choose a category ID from the following list:"
+      $categories.each do |category|
+        puts "#{category.id} - #{category.name}"
+      end
+
+      loop do
+        choice = ask("Enter your category: ").to_i    
+
+        # Validate the choice and assign it to a variable
+        category = $categories.find { |category| category.id == choice }
+        if category.nil?
+          puts "Invalid choice. Please enter a valid number."
+          next
+        else
+          puts "You chose #{category.name}"
+          break
+        end
+      end
+
+      expense = { payee: payee, amount: amount, date: date, category: category}
+
+      # Store the expense object in a persistent storage
+      store = PStore.new('expense.pstore')
+      store.transaction do
+        store[:expenses] ||= []
+        store[:expenses] << expense
+      end
+      display(expense,method)
+      puts "Added: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]} - #{expense[:category].name}"
+
+      # Log the addition of an expense
+      LOGGER.info("Added: #{expense[:payee].name} - #{expense[:amount]} - #{expense[:date]}")
+
+      break
+    end
+  end
+
   desc "list", "List all expenses"
   def list
+    puts "Your Expense Details"
     # Retrieve the expenses from the persistent storage
     store = PStore.new('expense.pstore')
     store.transaction do
@@ -125,30 +154,42 @@ class ExpenseCLI < Thor
 
   desc "remove", "Remove an expense by its index"
   def remove
+    method='Remove'
     list
-    index = ask("Enter the index to remove: ").to_i - 1
-    store = PStore.new('expense.pstore')
-    store.transaction do
-      expenses = store[:expenses] || []
+    begin
+      index = ask("Enter the index to remove: ").to_i - 1
+      store = PStore.new('expense.pstore')
+      store.transaction do
+        expenses = store[:expenses] || []
 
-      if expenses.empty?
-        puts "No items in the Expense list."
-        return
-      end
+        if expenses.empty?
+          puts "No items in the Expense list."
+          return
+        end
 
-      if index >= 0 && index < expenses.length
         removed_expense = expenses.delete_at(index)
         store[:expenses] = expenses
-        puts "Removed: #{removed_expense[:payee].name} - #{removed_expense[:amount]} - #{removed_expense[:date]} - #{removed_expense[:category].name}"
+
+        display(removed_expense,method)
+
         LOGGER.info("Removed: #{removed_expense[:payee].name} - #{removed_expense[:amount]} - #{removed_expense[:date]} - #{removed_expense[:category].name}")
+      end
+    rescue 
+      puts "An error occurred: #{$!}"
+      puts "Do you want to retry or cancel? (r/c)"
+      answer = ask("Enter your choice: ")
+      
+      if answer.downcase == "r"
+        retry
+      elsif answer.downcase == "c"
+        puts "Operation cancelled."
+        return
       else
-        puts "Invalid index. Use 'list' to see the expense indices."
-        # Log the error for an invalid index
-        LOGGER.error("Invalid index. Use 'list' to see the expense indices.")
+        puts "Invalid choice. Please enter r or c."
+        retry
       end
     end
   end
-
 
   desc "update", "Update an expense by its index"
   def update
@@ -216,7 +257,37 @@ class ExpenseCLI < Thor
     end
   end
 
+  desc "exit_CLI", "Exit the application"
+  def exit_CLI
+    puts "Exiting ExpenseCLI"
+    exit(0)
+  end
+
 end
 
-ExpenseCLI.start
+loop do
+  puts "ExpenseCLI Options:"
+  puts "1. Add an expense"
+  puts "2. List all expenses"
+  puts "3. Update an expense"
+  puts "4. Remove an expense"
+  puts "5. Exit"
+  puts "Enter your choice: "
+  choice = gets.chomp().to_i
+
+  case choice
+  when 1
+    ExpenseCLI.start(["add"])
+  when 2
+    ExpenseCLI.start(["list"])
+  when 3
+    ExpenseCLI.start(["update"])
+  when 4
+    ExpenseCLI.start(["remove"])
+  when 5
+    ExpenseCLI.start(["exit_CLI"])
+  else
+    puts "Invalid choice. Please enter a valid option (1-5)."
+  end
+end
 
