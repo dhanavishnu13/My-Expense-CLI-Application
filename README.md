@@ -1,4 +1,6 @@
-# ruby_CLI
+# My Expense CLI Application
+To run
+- ruby .\lib\expense_cli.rb
 
 To add RSpec
 - bundle init
