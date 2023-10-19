@@ -24,3 +24,87 @@ I, [2023-10-18T12:34:40.041728 #17032]  INFO -- : 2. gowtham - 50000.0 -  - tran
 I, [2023-10-18T12:34:40.042315 #17032]  INFO -- : 3. New Hotel - 10000.0 - 2023-10-18 - rent
 I, [2023-10-18T12:34:40.042753 #17032]  INFO -- : 4. Neeraj - 10000.0 - 2023-10-18 - entertainment
 I, [2023-10-18T12:35:21.957654 #17032]  INFO -- : Updated expense 1: jio - 1000.0 - 2023-10-18 -  -> jio - 1500.0 -  - other
+I, [2023-10-19T09:16:46.320717 #9492]  INFO -- : Added: Noname - 10000.0 - 2023-10-19
+I, [2023-10-19T09:17:03.905213 #15028]  INFO -- : 1. jio - 1500.0 -  - other
+I, [2023-10-19T09:17:03.906122 #15028]  INFO -- : 2. gowtham - 50000.0 -  - transportation
+I, [2023-10-19T09:17:03.906844 #15028]  INFO -- : 3. New Hotel - 10000.0 - 2023-10-18 - rent
+I, [2023-10-19T09:17:03.907388 #15028]  INFO -- : 4. Neeraj - 10000.0 - 2023-10-18 - entertainment
+I, [2023-10-19T09:17:03.907776 #15028]  INFO -- : 5. #<ExpenseCLI::Payee:0x00000206d44d1a48> - 10000.0 - 2023-10-19 - #<ExpenseCLI::Category:0x00000206d44d19a8>
+E, [2023-10-19T09:25:15.384763 #6468] ERROR -- : Expense at index 0 is not properly formatted.
+E, [2023-10-19T09:25:15.385344 #6468] ERROR -- : Expense at index 1 is not properly formatted.
+E, [2023-10-19T09:25:15.386077 #6468] ERROR -- : Expense at index 2 is not properly formatted.
+E, [2023-10-19T09:25:15.386766 #6468] ERROR -- : Expense at index 3 is not properly formatted.
+I, [2023-10-19T09:25:15.387149 #6468]  INFO -- : 5. Noname - 10000.0 - 2023-10-19 - entertainment
+E, [2023-10-19T09:26:20.555893 #13764] ERROR -- : Expense at index 0 is not properly formatted.
+E, [2023-10-19T09:26:20.556394 #13764] ERROR -- : Expense at index 1 is not properly formatted.
+E, [2023-10-19T09:26:20.556834 #13764] ERROR -- : Expense at index 2 is not properly formatted.
+E, [2023-10-19T09:26:20.557209 #13764] ERROR -- : Expense at index 3 is not properly formatted.
+I, [2023-10-19T09:26:20.557524 #13764]  INFO -- : 5. Noname - 10000.0 - 2023-10-19 - entertainment
+E, [2023-10-19T09:27:28.559281 #11604] ERROR -- : Expense at index 0 is not properly formatted.
+E, [2023-10-19T09:27:28.560241 #11604] ERROR -- : Expense at index 1 is not properly formatted.
+E, [2023-10-19T09:27:28.561101 #11604] ERROR -- : Expense at index 2 is not properly formatted.
+E, [2023-10-19T09:27:28.561352 #11604] ERROR -- : Expense at index 3 is not properly formatted.
+I, [2023-10-19T09:27:28.561657 #11604]  INFO -- : 5. Noname - 10000.0 - 2023-10-19 - entertainment
+E, [2023-10-19T09:27:52.913269 #13012] ERROR -- : Expense at index 0 is not properly formatted.
+E, [2023-10-19T09:27:52.914228 #13012] ERROR -- : Expense at index 1 is not properly formatted.
+E, [2023-10-19T09:27:52.914694 #13012] ERROR -- : Expense at index 2 is not properly formatted.
+E, [2023-10-19T09:27:52.915072 #13012] ERROR -- : Expense at index 3 is not properly formatted.
+I, [2023-10-19T09:27:52.915310 #13012]  INFO -- : 5. Noname - 10000.0 - 2023-10-19 - entertainment
+E, [2023-10-19T09:27:58.411526 #13012] ERROR -- : Invalid index. Use 'list' to see the expense indices.
+E, [2023-10-19T09:28:05.986587 #5364] ERROR -- : Expense at index 0 is not properly formatted.
+E, [2023-10-19T09:28:05.987112 #5364] ERROR -- : Expense at index 1 is not properly formatted.
+E, [2023-10-19T09:28:05.987576 #5364] ERROR -- : Expense at index 2 is not properly formatted.
+E, [2023-10-19T09:28:05.987760 #5364] ERROR -- : Expense at index 3 is not properly formatted.
+I, [2023-10-19T09:28:05.988096 #5364]  INFO -- : 5. Noname - 10000.0 - 2023-10-19 - entertainment
+I, [2023-10-19T09:28:08.354916 #5364]  INFO -- : Removed: #<ExpenseCLI::Payee:0x00000223ff16b730> - 10000.0 - 2023-10-19 - #<ExpenseCLI::Category:0x00000223ff16afb0>
+I, [2023-10-19T09:34:37.077549 #4652]  INFO -- : Added: RedBus - 1000.0 - 2023-10-19
+I, [2023-10-19T09:34:42.176169 #14720]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:35:22.452015 #9640]  INFO -- : Added: Jio - 1000.0 - 2023-10-17
+I, [2023-10-19T09:35:24.794949 #6632]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:35:24.795546 #6632]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:36:46.694594 #14004]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:36:46.695159 #14004]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:37:23.320030 #1600]  INFO -- : Added: Gowtham - 10000.0 - 2023-10-19
+I, [2023-10-19T09:37:27.430915 #6660]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:37:27.431538 #6660]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:37:27.431963 #6660]  INFO -- : 3. Gowtham - 10000.0 - 2023-10-19 - rent
+I, [2023-10-19T09:37:34.115358 #15056]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:37:34.116349 #15056]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:37:34.117241 #15056]  INFO -- : 3. Gowtham - 10000.0 - 2023-10-19 - rent
+I, [2023-10-19T09:38:08.863337 #15184]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:38:08.863960 #15184]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:38:08.864389 #15184]  INFO -- : 3. Gowtham - 10000.0 - 2023-10-19 - rent
+I, [2023-10-19T09:39:31.296784 #2456]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:39:31.297288 #2456]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:39:31.297790 #2456]  INFO -- : 3. Gowtham - 10000.0 - 2023-10-19 - rent
+I, [2023-10-19T09:42:56.450354 #5344]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:42:56.451294 #5344]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:42:56.451909 #5344]  INFO -- : 3. Gowtham - 10000.0 - 2023-10-19 - rent
+I, [2023-10-19T09:44:51.461440 #5316]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:44:51.461838 #5316]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+I, [2023-10-19T09:44:51.462156 #5316]  INFO -- : 3. Gowtham - 10000.0 - 2023-10-19 - rent
+I, [2023-10-19T09:44:56.964851 #5316]  INFO -- : Updated expense 3: #<ExpenseCLI::Payee:0x000001fe89fcafd8> - 10000.0 - 2023-10-19 - #<ExpenseCLI::Category:0x000001fe89fca830> -> Gowtham - 10000.0 -  - [#<ExpenseCLI::Category:0x000001fe8a7ef2e0 @name="food", @id=1>, #<ExpenseCLI::Category:0x000001fe8a7ef240 @name="rent", @id=2>, #<ExpenseCLI::Category:0x000001fe8a7ef1c8 @name="transportation", @id=3>, #<ExpenseCLI::Category:0x000001fe8a7ef150 @name="entertainment", @id=4>, #<ExpenseCLI::Category:0x000001fe8a7ef0d8 @name="other", @id=5>]
+I, [2023-10-19T09:46:19.806645 #10120]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:46:19.807490 #10120]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+E, [2023-10-19T09:46:19.807865 #10120] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:47:08.911574 #12724]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:47:08.912583 #12724]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+E, [2023-10-19T09:47:08.913278 #12724] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:47:30.645766 #6048]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:47:30.646695 #6048]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+E, [2023-10-19T09:47:30.647366 #6048] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:48:49.960578 #8348]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:48:49.961020 #8348]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+E, [2023-10-19T09:48:49.961485 #8348] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:49:40.986126 #12828]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:49:40.987018 #12828]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+E, [2023-10-19T09:49:40.987811 #12828] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:50:54.599786 #5588]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:50:54.600793 #5588]  INFO -- : 2. Jio - 1000.0 - 2023-10-17 - entertainment
+E, [2023-10-19T09:50:54.601474 #5588] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:51:05.620562 #5588]  INFO -- : Updated expense 2: Jio - 1000.0 - 2023-10-17 - entertainment -> Jio - 1500.0 -  - entertainment
+I, [2023-10-19T09:53:05.129177 #12240]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+E, [2023-10-19T09:53:05.130121 #12240] ERROR -- : Expense at index 1 is not properly formatted.
+E, [2023-10-19T09:53:05.130965 #12240] ERROR -- : Expense at index 2 is not properly formatted.
+I, [2023-10-19T09:53:55.212084 #12240]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-19T09:55:29.157285 #3544]  INFO -- : Added: RedBus - 1000.0 - 2023-10-19
