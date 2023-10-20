@@ -258,3 +258,78 @@ I, [2023-10-19T18:22:05.128221 #15664]  INFO -- : 1. RedBus - 1000.0 - 2023-10-1
 I, [2023-10-19T18:22:22.415349 #15664]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1000.0 - 2023-10-19 - transportation
 I, [2023-10-19T18:23:20.403116 #15664]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
 I, [2023-10-19T18:23:21.733011 #15664]  INFO -- : Removed: RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T09:31:58.990350 #14228]  INFO -- : Added: Redbus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:39:29.163035 #14228]  INFO -- : 1. Redbus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:39:36.583582 #14228]  INFO -- : 1. Redbus - 1000.0 - 2023-10-20 - transportation
+E, [2023-10-20T09:39:49.465891 #14228] ERROR -- : Invalid index. Use 'list' to see the expense indices.
+I, [2023-10-20T09:40:13.408290 #14228]  INFO -- : Updated expense 1: Redbus - 1000.0 - 2023-10-20 - transportation -> Redbus - 1000.0 - 2023-10-20 - other
+I, [2023-10-20T09:40:28.749545 #14228]  INFO -- : 1. Redbus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:41:02.922022 #14228]  INFO -- : 1. Redbus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:41:08.824811 #14228]  INFO -- : Removed: Redbus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:46:22.339404 #14228]  INFO -- : Added: RedBus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:46:40.726810 #14228]  INFO -- : 1. RedBus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:47:00.870183 #14228]  INFO -- : 1. RedBus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:47:38.821281 #14228]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-20 - transportation -> MyBus - 1500.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:51:22.272199 #14228]  INFO -- : 1. RedBus - 1000.0 - 2023-10-20 - transportation
+I, [2023-10-20T09:54:32.281068 #12908]  INFO -- : Added: RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T09:54:35.531280 #12908]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T09:54:41.010373 #12908]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T09:55:17.689831 #12908]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> Name - 100.0 - 2023-10-19 - food
+I, [2023-10-20T09:55:55.608084 #12908]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:02:33.081059 #6184]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:43:37.358744 #5576]  INFO -- : Added: noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:43:40.409542 #5576]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:43:40.409851 #5576]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:43:45.450762 #5576]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:43:45.451060 #5576]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:48:13.512821 #14304]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:48:13.513188 #14304]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:54:27.521941 #12328]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:54:27.522412 #12328]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:54:46.448880 #12328]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:54:56.859305 #12328]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:54:56.859748 #12328]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:56:17.655126 #11788]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:56:17.655432 #11788]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:56:24.375801 #11788]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:56:27.039261 #11788]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:56:27.039500 #11788]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T10:59:48.021476 #2480]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T10:59:48.023211 #2480]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:00:29.756298 #2480]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> BUs - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:01:18.511497 #2480]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:01:18.511831 #2480]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:05:35.354708 #14736]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:05:35.355022 #14736]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:05:47.459905 #14736]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:07:37.197886 #12944]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:07:37.198213 #12944]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:07:45.767459 #12944]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:07:45.767675 #12944]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:09:01.428418 #6380]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:09:01.428756 #6380]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:09:20.563031 #6380]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:10:01.220706 #5512]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:10:01.220991 #5512]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:10:23.266159 #5512]  INFO -- : Updated expense 1: RedBus - 1000.0 - 2023-10-19 - transportation -> Bus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:11:07.120827 #3264]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:11:07.121108 #3264]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:11:17.431406 #3264]  INFO -- : Updated expense 2: noname - 100.0 - 2023-10-19 - food -> Name - 1500.0 - 2023-10-19 - food
+I, [2023-10-20T11:13:12.309968 #9704]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:13:12.310436 #9704]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:13:21.344601 #9704]  INFO -- : Updated expense 2: noname - 100.0 - 2023-10-19 - food -> Name - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:18:15.427292 #11748]  INFO -- : 1. RedBus - 1000.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:18:15.427650 #11748]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:18:24.841489 #11748]  INFO -- : 1. RedBus - 1500.0 - 2023-10-19 - transportation
+I, [2023-10-20T11:18:24.841759 #11748]  INFO -- : 2. noname - 100.0 - 2023-10-19 - food
+I, [2023-10-20T11:24:10.305145 #15196]  INFO -- : Added: nome - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:24:32.540765 #15196]  INFO -- : 1. nome - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:24:35.292948 #15196]  INFO -- : 1. nome - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:24:43.840811 #15196]  INFO -- : 1. name - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:25:12.054229 #15196]  INFO -- : Added: RedBus - 1000.0 - 2023-10-10 - transportation
+I, [2023-10-20T11:25:19.701371 #15196]  INFO -- : 1. name - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:25:19.701882 #15196]  INFO -- : 2. RedBus - 1000.0 - 2023-10-10 - transportation
+I, [2023-10-20T11:25:27.392726 #15196]  INFO -- : 1. name - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:25:27.392992 #15196]  INFO -- : 2. RedBus - 1000.0 - 2023-10-10 - transportation
+I, [2023-10-20T11:25:36.265300 #15196]  INFO -- : 1. name - 100.0 - 2023-10-20 - food
+I, [2023-10-20T11:25:36.265704 #15196]  INFO -- : 2. RedBus - 1500.0 - 2023-10-10 - transportation

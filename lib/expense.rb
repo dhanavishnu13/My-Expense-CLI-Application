@@ -142,8 +142,8 @@ class Expense < Thor
       else
         expenses.each_with_index do |expense, index|
           # if valid_expense?(expense)
-        puts "#{index + 1}. #{extract(expense)}"
-        LOGGER.info("#{index + 1}. #{extract(expense)}")
+          puts "#{index + 1}. #{extract(expense)}"
+          LOGGER.info("#{index + 1}. #{extract(expense)}")
           # else
           #   puts "Expense at index #{index} is not properly formatted."
           #   LOGGER.error("Expense at index #{index} is not properly formatted.")
@@ -213,81 +213,83 @@ class Expense < Thor
       if expenses.empty?
         puts "No items in the Expense list."
         return
-      end
-      loop do
-        index = ask("(Enter '0' to exit)Enter the index to update: ").to_i - 1
-        if index==-1
-          return
-        elsif index >= 0 && index < expenses.length
-          old_expense = expenses[index]
+      else
+        loop do
+          index = ask("(Enter '0' to exit)Enter the index to update: ").to_i - 1
+          if index==-1
+            return
+          elsif index >= 0 && index < expenses.length
+            old_expense = expenses[index]
+            
+            payee = ask("Enter the new payee (leave empty to keep '#{old_expense[:payee].name}'): ").strip
+            # Validate and update attributes
+            if payee.empty?
+              payee = old_expense[:payee] 
+            else
+              payee = Payee.new(payee)
+            end
           
-          payee = ask("Enter the new payee (leave empty to keep '#{old_expense[:payee].name}'): ").strip
-          # Validate and update attributes
-          if payee.empty?
-            payee = old_expense[:payee] 
+            amount = ask("Enter the new amount (leave empty to keep '#{old_expense[:amount]}'): ").to_f
+            amount = old_expense[:amount] if amount <= 0
+
+            loop do
+              date = ask("Enter the new date (YYYY-MM-DD, leave empty to keep '#{old_expense[:date]}'): ")
+              if date.empty?
+                date=old_expense[:date]
+                break
+              else
+                if date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+                  date = Date.parse(date) 
+                  break
+                else
+                  puts "Invalid date format. Please use YYYY-MM-DD."
+                  next
+                end
+              end
+            end
+
+            # Display the categories with their corresponding numbers
+            puts "Please choose a category ID from the following list:"
+            $categories.each do |category|
+              puts "#{category.id} - #{category.name}"
+            end
+            loop do
+              # Ask the user for their choice and convert it to an integer
+              choice = ask("Enter new category (leave empty to keep '#{old_expense[:category].id}'): ")
+
+              # Validate the choice and assign it to a variable
+              if choice.empty?
+                category= old_expense[:category]
+                break
+              else
+                category = $categories.find { |category| category.id == choice.to_i }
+                if category.nil?
+                  puts "Invalid choice. Please enter a valid number."
+                  next
+                else
+                  puts "You chose #{category.name}"
+                  break
+                end
+              end
+            end
+
+            new_expense = { payee: payee, amount: amount, date: date, category: category }
+            expenses[index] = new_expense
+            store[:expenses] = expenses
+            store.commit
+            puts "Updated expense #{index + 1}: #{extract(old_expense)} -> #{extract(expenses[index])}"
+            LOGGER.info("Updated expense #{index + 1}: #{extract(old_expense)} -> #{extract(expenses[index])}")
+            break
           else
-            payee = Payee.new(payee)
+            puts "Invalid index. Use 'list' to see the expense indices."
+            # Log the error for an invalid index
+            LOGGER.error("Invalid index. Use 'list' to see the expense indices.")
+            next
           end
-        
-          amount = ask("Enter the new amount (leave empty to keep '#{old_expense[:amount]}'): ").to_f
-          amount = old_expense[:amount] if amount <= 0
-
-          loop do
-            date = ask("Enter the new date (YYYY-MM-DD, leave empty to keep '#{old_expense[:date]}'): ")
-            if date.empty?
-              date=old_expense[:date]
-              break
-            else
-              if date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
-                date = Date.parse(date) 
-                break
-              else
-                puts "Invalid date format. Please use YYYY-MM-DD."
-                next
-              end
-            end
-          end
-
-          # Display the categories with their corresponding numbers
-          puts "Please choose a category ID from the following list:"
-          $categories.each do |category|
-            puts "#{category.id} - #{category.name}"
-          end
-          loop do
-            # Ask the user for their choice and convert it to an integer
-            choice = ask("Enter new category (leave empty to keep '#{old_expense[:category].id}'): ")
-
-            # Validate the choice and assign it to a variable
-            if choice.empty?
-              category= old_expense[:category]
-              break
-            else
-              category = $categories.find { |category| category.id == choice.to_i }
-              if category.nil?
-                puts "Invalid choice. Please enter a valid number."
-                next
-              else
-                puts "You chose #{category.name}"
-                break
-              end
-            end
-          end
-
-          new_expense = { payee: payee, amount: amount, date: date, category: category }
-          expenses[index] = new_expense
-          store[:expenses] = expenses
-          
-          puts "Updated expense #{index + 1}: #{extract(old_expense)} -> #{extract(new_expense)}"
-          LOGGER.info("Updated expense #{index + 1}: #{extract(old_expense)} -> #{extract(new_expense)}")
-          return
-        else
-          puts "Invalid index. Use 'list' to see the expense indices."
-          # Log the error for an invalid index
-          LOGGER.error("Invalid index. Use 'list' to see the expense indices.")
-          next
         end
       end
     end
+    list
   end
 
   desc "exit_CLI", "Exit the application"
